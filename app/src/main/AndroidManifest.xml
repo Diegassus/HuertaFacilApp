@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools" >
 
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:icon="@drawable/app_logo"
+        android:label="Huerta Fácil"
         android:supportsRtl="true"
         android:theme="@style/Theme.HuertaFacilApp"
-        tools:targetApi="31">
+        tools:targetApi="31" >
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".inicio.registro.RegistroActivity"
+            android:theme="@style/Theme.HuertaFacilAppNone"
+            android:exported="false" />
+        <activity
+            android:name=".inicio.login.MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.HuertaFacilAppNone" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -10,19 +10,17 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="789dp"
-        android:layout_height="363dp"
+        android:layout_width="752dp"
+        android:layout_height="388dp"
         android:background="@drawable/cubo_naranja"
         android:rotation="-157"
+        android:rotationY="178"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.972"
+        app:layout_constraintHorizontal_bias="0.09"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+        app:layout_constraintVertical_bias="1.0" />
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="343dp"
         android:layout_height="603dp"
@@ -42,36 +40,10 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/logo" />
 
-        <TextView
-            android:id="@+id/textView4"
-            android:textColor="@color/black"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="11dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="No tienes una cuenta?"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/btnRegistrar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
-
-        <Button
-            android:id="@+id/btnRegistrar"
-            android:layout_width="200dp"
-            android:layout_height="40dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="Registrarse"
-            android:backgroundTint="@color/marcado"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"
             android:layout_width="320dp"
-            android:layout_height="370dp"
+            android:layout_height="500dp"
             android:background="@drawable/sombreado"
             android:elevation="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -82,26 +54,37 @@
             app:layout_constraintVertical_bias="0.0">
 
             <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Confirmar contraseña"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toTopOf="@+id/etRepetida"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.274"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="36dp"
                 android:fontFamily="sans-serif-medium"
                 android:text="Correo"
                 android:textColor="@color/black"
                 android:textSize="15dp"
                 app:layout_constraintBottom_toTopOf="@+id/etCorreo"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.187"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.833" />
+                app:layout_constraintHorizontal_bias="0.174"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
                 android:id="@+id/etCorreo"
                 android:layout_width="225dp"
                 android:layout_height="38dp"
-                android:layout_marginBottom="48dp"
+                android:layout_marginBottom="144dp"
                 android:background="#FBF8F8"
                 android:ems="10"
                 android:fontFamily="sans-serif-medium"
@@ -111,7 +94,7 @@
                 android:paddingRight="8px"
                 android:textColor="@color/black"
                 android:textColorHint="#9E9D9D"
-                app:layout_constraintBottom_toTopOf="@+id/etPassword"
+                app:layout_constraintBottom_toTopOf="@+id/etRepetida"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -126,14 +109,28 @@
                 android:textSize="15dp"
                 app:layout_constraintBottom_toTopOf="@+id/etPassword"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.214"
+                app:layout_constraintHorizontal_bias="0.197"
                 app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:text="Eres del hemisferio sur?"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toTopOf="@+id/btnLogin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.213"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etRepetida"
+                app:layout_constraintVertical_bias="0.464" />
 
             <EditText
                 android:id="@+id/etPassword"
-                android:layout_width="224dp"
-                android:layout_height="41dp"
-                android:layout_marginBottom="76dp"
+                android:layout_width="225dp"
+                android:layout_height="38dp"
                 android:background="#FBF8F8"
                 android:ems="10"
                 android:fontFamily="sans-serif-medium"
@@ -143,36 +140,67 @@
                 android:paddingRight="8px"
                 android:textColor="@color/black"
                 android:textColorHint="#9E9D9D"
+                app:layout_constraintBottom_toTopOf="@+id/etRepetida"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etCorreo" />
+
+            <EditText
+                android:id="@+id/etRepetida"
+                android:layout_width="224dp"
+                android:layout_height="41dp"
+                android:layout_marginBottom="80dp"
+                android:background="#FBF8F8"
+                android:ems="10"
+                android:fontFamily="sans-serif-medium"
+                android:hint="Confirmar"
+                android:inputType="textPassword"
+                android:paddingLeft="8px"
+                android:paddingRight="8px"
+                android:textColor="@color/black"
+                android:textColorHint="#9E9D9D"
                 app:layout_constraintBottom_toTopOf="@+id/btnLogin"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/tvRecuperar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
-                android:text="Olvidaste la contraseña?"
-                android:textColor="#0DCAEA"
-                android:textSize="15dp"
-                app:layout_constraintBottom_toTopOf="@+id/btnLogin"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etPassword"
-                app:layout_constraintVertical_bias="0.224" />
 
             <Button
                 android:id="@+id/btnLogin"
                 android:layout_width="200dp"
                 android:layout_height="40dp"
-                android:layout_marginBottom="44dp"
+                android:layout_marginBottom="32dp"
                 android:backgroundTint="@color/principal"
-                android:fontFamily="sans-serif-medium"
-                android:text="Login"
+                android:fontFamily="sans-serif"
+                android:text="Crear Cuenta"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
                 app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:textColor="@color/black"
+                android:text="Bienvenido"
+                android:textSize="35dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/etCorreo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <CheckBox
+                android:id="@+id/cbSur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                app:layout_constraintBottom_toTopOf="@+id/btnLogin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView7"
+                app:layout_constraintTop_toBottomOf="@+id/etRepetida" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
