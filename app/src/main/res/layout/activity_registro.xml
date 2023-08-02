@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="752dp"
-        android:layout_height="388dp"
+        android:layout_height="488dp"
         android:background="@drawable/cubo_naranja"
         android:rotation="-157"
         android:rotationY="178"
