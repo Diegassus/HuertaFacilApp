@@ -27,4 +27,13 @@
         <item name="android:statusBarColor">@color/white</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Theme.HuertaFacilApp.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.HuertaFacilApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.HuertaFacilApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

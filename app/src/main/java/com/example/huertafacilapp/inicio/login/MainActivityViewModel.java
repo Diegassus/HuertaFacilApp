@@ -12,6 +12,7 @@ import androidx.lifecycle.AndroidViewModel;
 import com.example.huertafacilapp.inicio.registro.RegistroActivity;
 import com.example.huertafacilapp.models.Login;
 import com.example.huertafacilapp.request.ApiClient;
+import com.example.huertafacilapp.ui.HomeActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -44,7 +45,9 @@ public class MainActivityViewModel extends AndroidViewModel {
                             SharedPreferences.Editor editor = sp.edit();
                             editor.putString("token","Bearer "+response.body());
                             editor.commit();
-                            Toast.makeText(context, response.body(), Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(context, HomeActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            context.startActivity(intent);
                         }
                     }
                 }
