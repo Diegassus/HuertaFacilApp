@@ -2,15 +2,22 @@ package com.example.huertafacilapp.request;
 
 
 import com.example.huertafacilapp.models.Login;
+import com.example.huertafacilapp.models.PlantaListado;
 import com.example.huertafacilapp.models.Registro;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public class ApiClient {
     private static final String PATH = "";
@@ -28,5 +35,8 @@ public class ApiClient {
 
         @POST("usuarios/login")
         Call<String> login(@Body Login login);
+
+        @GET("Plantas/ListadoPrincipal")
+        Call<List<PlantaListado>> listadoPrincipal(@Header("Authorization") String token);
     }
 }

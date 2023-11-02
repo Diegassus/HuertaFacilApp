@@ -25,7 +25,47 @@ public class HomeFragment extends Fragment {
         View root = binding.getRoot();
         vm  = new ViewModelProvider(this).get(HomeViewModel.class);
         vm.init(requireContext());
-        vm.obtenerClima();
+
+        vm.getClimaCargado().observe(getViewLifecycleOwner(), value -> {
+            if (!value) {
+                binding.tvMaxima.setVisibility(View.INVISIBLE);
+                binding.tvMinima.setVisibility(View.INVISIBLE);
+                binding.tvActual.setVisibility(View.INVISIBLE);
+                binding.tvNombre1.setVisibility(View.INVISIBLE);
+                binding.tvNombre2.setVisibility(View.INVISIBLE);
+                binding.tvNombre3.setVisibility(View.INVISIBLE);
+                binding.tvPresion.setVisibility(View.INVISIBLE);
+                binding.tvProbabilidad.setVisibility(View.INVISIBLE);
+                binding.tvTextoMaxima.setVisibility(View.INVISIBLE);
+                binding.tvTextoMinima.setVisibility(View.INVISIBLE);
+                binding.tvEstado.setVisibility(View.INVISIBLE);
+                binding.tvViento.setVisibility(View.INVISIBLE);
+                binding.tvInformacionClima.setVisibility(View.VISIBLE);
+            }else {
+                binding.tvInformacionClima.setVisibility(View.INVISIBLE);
+                binding.tvMaxima.setVisibility(View.VISIBLE);
+                binding.tvMinima.setVisibility(View.VISIBLE);
+                binding.tvActual.setVisibility(View.VISIBLE);
+                binding.tvNombre1.setVisibility(View.VISIBLE);
+                binding.tvNombre2.setVisibility(View.VISIBLE);
+                binding.tvNombre3.setVisibility(View.VISIBLE);
+                binding.tvPresion.setVisibility(View.VISIBLE);
+                binding.tvProbabilidad.setVisibility(View.VISIBLE);
+                binding.tvTextoMaxima.setVisibility(View.VISIBLE);
+                binding.tvTextoMinima.setVisibility(View.VISIBLE);
+                binding.tvEstado.setVisibility(View.VISIBLE);
+                binding.tvViento.setVisibility(View.VISIBLE);
+            }
+        });
+
+        binding.tvInformacionClima.setOnClickListener(v -> {
+            vm.cargarClima(true);
+            requestLocationPermissions();
+        });
+
+        vm.getConsejo().observe(getViewLifecycleOwner(), value -> {
+            binding.tvRecomendacion.setText(value);
+        });
 
         return root;
     }
