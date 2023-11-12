@@ -44,6 +44,9 @@ public class ApiClient {
         @GET("Plantas/ListadoPrincipal")
         Call<List<PlantaListado>> listadoPrincipal(@Header("Authorization") String token);
 
+        @GET("Plantas/ListadoFavoritas")
+        Call<List<PlantaListado>> listadoFavoritas(@Header("Authorization") String token);
+
         @GET("Plantas/")
         Call<Planta> plantaDetalle(@Header("Authorization") String token, @Query("PlantaId") int PlantaId);
 

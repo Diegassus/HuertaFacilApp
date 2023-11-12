@@ -26,6 +26,7 @@
         android:name="com.example.huertafacilapp.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+
     <fragment
         android:id="@+id/plantaDetalle"
         android:name="com.example.huertafacilapp.ui.listadoPrincipal.detalle.PlantaDetalle"
@@ -34,6 +35,18 @@
         <action
             android:id="@+id/action_plantaDetalle_to_nav_listado_principal"
             app:destination="@id/nav_listado_principal" />
+        <action
+            android:id="@+id/action_plantaDetalle_to_favoritasFragment"
+            app:destination="@id/nav_listado_favoritas" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_listado_favoritas"
+        android:name="com.example.huertafacilapp.ui.favoritas.FavoritasFragment"
+        android:label="fragment_favoritas"
+        tools:layout="@layout/fragment_favoritas" >
+        <action
+            android:id="@+id/action_favoritasFragment_to_plantaDetalle"
+            app:destination="@id/plantaDetalle" />
     </fragment>
 
 </navigation>
