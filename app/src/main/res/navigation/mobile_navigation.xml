@@ -15,12 +15,25 @@
         android:id="@+id/nav_listado_principal"
         android:name="com.example.huertafacilapp.ui.listadoPrincipal.ListadoPrincipalFragment"
         android:label="listado_principal"
-        tools:layout="@layout/fragment_listado_principal" />
+        tools:layout="@layout/fragment_listado_principal" >
+        <action
+            android:id="@+id/action_nav_listado_principal_to_plantaDetalle"
+            app:destination="@id/plantaDetalle" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="com.example.huertafacilapp.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/plantaDetalle"
+        android:name="com.example.huertafacilapp.ui.listadoPrincipal.detalle.PlantaDetalle"
+        android:label="fragment_planta_detalle"
+        tools:layout="@layout/fragment_planta_detalle" >
+        <action
+            android:id="@+id/action_plantaDetalle_to_nav_listado_principal"
+            app:destination="@id/nav_listado_principal" />
+    </fragment>
 
 </navigation>

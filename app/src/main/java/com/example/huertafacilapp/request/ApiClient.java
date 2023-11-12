@@ -2,6 +2,7 @@ package com.example.huertafacilapp.request;
 
 
 import com.example.huertafacilapp.models.Login;
+import com.example.huertafacilapp.models.Planta;
 import com.example.huertafacilapp.models.PlantaListado;
 import com.example.huertafacilapp.models.Registro;
 import com.google.gson.Gson;
@@ -17,6 +18,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public class ApiClient {
@@ -36,7 +38,16 @@ public class ApiClient {
         @POST("usuarios/login")
         Call<String> login(@Body Login login);
 
+        @GET("usuarios/Favorito")
+        Call<Boolean> esFavorito(@Header("Authorization") String token, @Query("PlantaId") int PlantaId);
+
         @GET("Plantas/ListadoPrincipal")
         Call<List<PlantaListado>> listadoPrincipal(@Header("Authorization") String token);
+
+        @GET("Plantas/")
+        Call<Planta> plantaDetalle(@Header("Authorization") String token, @Query("PlantaId") int PlantaId);
+
+        @POST("Usuarios/Favorito")
+        Call<Boolean> guardarFavorito(@Header("Authorization") String token, @Query("PlantaId") int PlantaId);
     }
 }
