@@ -3,11 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.favoritas.FavoritasFragment">
+    tools:context=".ui.rotaciones.RotacionesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listadoFavs"
-        android:background="@color/white"
+        android:id="@+id/listadoRotaciones"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
 </FrameLayout>

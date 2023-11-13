@@ -56,7 +56,10 @@ public class PlantaDetalle extends Fragment {
       });
     });
 
-
+    // TODO: VER ROTACIONES
+    binding.btnRotaciones.setOnClickListener(v -> {
+      mViewModel.verRotaciones(v);
+    });
 
     return root;
   }

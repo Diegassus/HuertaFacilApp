@@ -38,6 +38,9 @@
         <action
             android:id="@+id/action_plantaDetalle_to_favoritasFragment"
             app:destination="@id/nav_listado_favoritas" />
+        <action
+            android:id="@+id/action_plantaDetalle_to_rotacionesFragment"
+            app:destination="@id/nav_rotaciones" />
     </fragment>
     <fragment
         android:id="@+id/nav_listado_favoritas"
@@ -46,6 +49,15 @@
         tools:layout="@layout/fragment_favoritas" >
         <action
             android:id="@+id/action_favoritasFragment_to_plantaDetalle"
+            app:destination="@id/plantaDetalle" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_rotaciones"
+        android:name="com.example.huertafacilapp.ui.rotaciones.RotacionesFragment"
+        android:label="fragment_rotaciones"
+        tools:layout="@layout/fragment_rotaciones" >
+        <action
+            android:id="@+id/action_rotacionesFragment_to_plantaDetalle"
             app:destination="@id/plantaDetalle" />
     </fragment>
 

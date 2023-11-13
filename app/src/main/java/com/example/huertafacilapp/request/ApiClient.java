@@ -52,5 +52,8 @@ public class ApiClient {
 
         @POST("Usuarios/Favorito")
         Call<Boolean> guardarFavorito(@Header("Authorization") String token, @Query("PlantaId") int PlantaId);
+
+        @GET("plantas/rotaciones")
+        Call<List<PlantaListado>> rotaciones(@Header("Authorization") String token, @Query("PlantaId") int PlantaId);
     }
 }
