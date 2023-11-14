@@ -1,10 +1,12 @@
 package com.example.huertafacilapp.request;
 
 
+import com.example.huertafacilapp.models.Documento;
 import com.example.huertafacilapp.models.Login;
 import com.example.huertafacilapp.models.Planta;
 import com.example.huertafacilapp.models.PlantaListado;
 import com.example.huertafacilapp.models.Registro;
+import com.example.huertafacilapp.models.Usos;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -55,5 +57,12 @@ public class ApiClient {
 
         @GET("plantas/rotaciones")
         Call<List<PlantaListado>> rotaciones(@Header("Authorization") String token, @Query("PlantaId") int PlantaId);
+
+        @GET("plantas/usos")
+        Call<List<Usos>> usos(@Header("Authorization") String token, @Query("PlantaId") int PlantaId);
+
+        @GET("usuarios/documentos")
+        Call<List<Documento>> documentos(@Header("Authorization") String token);
+
     }
 }

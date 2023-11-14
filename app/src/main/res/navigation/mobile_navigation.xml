@@ -60,5 +60,10 @@
             android:id="@+id/action_rotacionesFragment_to_plantaDetalle"
             app:destination="@id/plantaDetalle" />
     </fragment>
+    <fragment
+        android:id="@+id/nav_listado_documentos"
+        android:name="com.example.huertafacilapp.ui.documentos.ListadoDocumentosFragment"
+        android:label="fragment_listado_documentos"
+        tools:layout="@layout/fragment_listado_documentos" />
 
 </navigation>
