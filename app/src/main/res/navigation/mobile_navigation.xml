@@ -64,6 +64,31 @@
         android:id="@+id/nav_listado_documentos"
         android:name="com.example.huertafacilapp.ui.documentos.ListadoDocumentosFragment"
         android:label="fragment_listado_documentos"
-        tools:layout="@layout/fragment_listado_documentos" />
+        tools:layout="@layout/fragment_listado_documentos" >
+        <action
+            android:id="@+id/action_nav_listado_documentos_to_nuevoDocumentoFragment"
+            app:destination="@id/nav_NuevoDocumentoFragment" />
+        <action
+            android:id="@+id/action_nav_listado_documentos_to_nav_detalleDocumento"
+            app:destination="@id/nav_detalleDocumento" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_NuevoDocumentoFragment"
+        android:name="com.example.huertafacilapp.ui.documentos.nuevo.NuevoDocumentoFragment"
+        android:label="fragment_nuevo_documento"
+        tools:layout="@layout/fragment_nuevo_documento" >
+        <action
+            android:id="@+id/action_nuevoDocumentoFragment_to_nav_listado_documentos"
+            app:destination="@id/nav_listado_documentos" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_detalleDocumento"
+        android:name="com.example.huertafacilapp.ui.documentos.detalle.DetalleDocumentoFragment"
+        android:label="fragment_detalle_documento"
+        tools:layout="@layout/fragment_detalle_documento" >
+        <action
+            android:id="@+id/action_nav_detalleDocumento_to_nav_listado_documentos"
+            app:destination="@id/nav_listado_documentos" />
+    </fragment>
 
 </navigation>

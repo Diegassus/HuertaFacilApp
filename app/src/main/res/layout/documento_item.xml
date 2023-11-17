@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
     android:paddingBottom="25dp">
 
     <androidx.cardview.widget.CardView
@@ -42,27 +43,27 @@
                 android:id="@+id/tvDocDescargar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="28dp"
                 android:text="Descargar"
                 android:textColor="@color/principal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.756"
-                app:layout_constraintStart_toEndOf="@+id/tvNombre"
+                app:layout_constraintHorizontal_bias="0.76"
+                app:layout_constraintStart_toEndOf="@+id/tvDocTitle"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.506" />
+                app:layout_constraintVertical_bias="0.493" />
 
             <TextView
                 android:id="@+id/tvDocVer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Ver Documento"
+                android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.812"
-                app:layout_constraintStart_toEndOf="@+id/tvTitulo"
+                app:layout_constraintHorizontal_bias="0.795"
+                app:layout_constraintStart_toEndOf="@+id/tvDocTitle"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.506" />
+                app:layout_constraintVertical_bias="0.493" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,10 +18,11 @@ import android.view.ViewGroup;
 
 import com.example.huertafacilapp.R;
 import com.example.huertafacilapp.databinding.FragmentListadoDocumentosBinding;
-import com.example.huertafacilapp.models.Documento;
+import com.example.huertafacilapp.models.DocumentoVista;
 import com.example.huertafacilapp.ui.listadoPrincipal.ListadoPrincipalAdapter;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ListadoDocumentosFragment extends Fragment {
 
@@ -35,6 +37,7 @@ public class ListadoDocumentosFragment extends Fragment {
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                            @Nullable Bundle savedInstanceState) {
     vm = new ViewModelProvider(this).get(ListadoDocumentosViewModel.class);
+    vm.actualizar();
     binding = FragmentListadoDocumentosBinding.inflate(inflater, container, false);
 
     RecyclerView rv = binding.listaDocumentos;
@@ -42,10 +45,20 @@ public class ListadoDocumentosFragment extends Fragment {
 
     rv.setLayoutManager(gm);
 
-    vm.getDocumentos().observe(getViewLifecycleOwner(), new Observer<ArrayList<Documento>>() {
+    vm.getDocumentos().observe(getViewLifecycleOwner(), new Observer<ArrayList<DocumentoVista>>() {
       @Override
-      public void onChanged(ArrayList<Documento> documentos) {
+      public void onChanged(ArrayList<DocumentoVista> documentos) {
         rv.setAdapter(new DocumentoAdapter(getContext(), documentos,getLayoutInflater()));
+      }
+    });
+
+    binding.btnDocumentoNuevo.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        String directorio = requireContext().getFilesDir().toString();
+        Bundle bundle = new Bundle();
+        bundle.putString("directorio",directorio);
+        Navigation.findNavController(view).navigate(R.id.nav_NuevoDocumentoFragment,bundle);
       }
     });
 

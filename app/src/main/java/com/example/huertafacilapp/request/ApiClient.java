@@ -1,7 +1,7 @@
 package com.example.huertafacilapp.request;
 
 
-import com.example.huertafacilapp.models.Documento;
+import com.example.huertafacilapp.models.DocumentoVista;
 import com.example.huertafacilapp.models.Login;
 import com.example.huertafacilapp.models.Planta;
 import com.example.huertafacilapp.models.PlantaListado;
@@ -13,13 +13,18 @@ import com.google.gson.GsonBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -62,7 +67,18 @@ public class ApiClient {
         Call<List<Usos>> usos(@Header("Authorization") String token, @Query("PlantaId") int PlantaId);
 
         @GET("usuarios/documentos")
-        Call<List<Documento>> documentos(@Header("Authorization") String token);
+        Call<List<DocumentoVista>> documentos(@Header("Authorization") String token);
+
+        @GET("usuarios/descargar")
+        Call<ResponseBody> descargar(@Header("Authorization") String token, @Query("DocumentoId") int DocumentoId);
+
+        @Multipart
+        @POST("Usuarios/Documentos")
+        Call<Boolean> guardarDocumento(@Header("Authorization") String token, @Part MultipartBody.Part file);
+
+        @Multipart
+        @POST("Usuarios/ActualizarDocumentos")
+        Call<Boolean> actualizarDocumento(@Header("Authorization") String token, @Part MultipartBody.Part file, @Part("nombreViejo") RequestBody nombreViejo);
 
     }
 }
