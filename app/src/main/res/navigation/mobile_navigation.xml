@@ -9,7 +9,17 @@
         android:id="@+id/nav_home"
         android:name="com.example.huertafacilapp.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_nuevoRecordatorioFragment"
+            app:destination="@id/nuevoRecordatorioFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_detalleRecordatorioFragment"
+            app:destination="@id/nav_detalleRecordatorioFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_detalleRecordatorioFragment"
+            app:destination="@id/nav_detalleRecordatorioFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_listado_principal"
@@ -89,6 +99,24 @@
         <action
             android:id="@+id/action_nav_detalleDocumento_to_nav_listado_documentos"
             app:destination="@id/nav_listado_documentos" />
+    </fragment>
+    <fragment
+        android:id="@+id/nuevoRecordatorioFragment"
+        android:name="com.example.huertafacilapp.ui.home.nuevo.NuevoRecordatorioFragment"
+        android:label="fragment_nuevo_recordatorio"
+        tools:layout="@layout/fragment_nuevo_recordatorio" >
+        <action
+            android:id="@+id/action_nuevoRecordatorioFragment_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_detalleRecordatorioFragment"
+        android:name="com.example.huertafacilapp.ui.home.detalle.DetalleRecordatorioFragment"
+        android:label="fragment_detalle_recordatorio"
+        tools:layout="@layout/fragment_detalle_recordatorio" >
+        <action
+            android:id="@+id/action_detalleRecordatorioFragment_to_nav_home"
+            app:destination="@id/nav_home" />
     </fragment>
 
 </navigation>

@@ -13,9 +13,18 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.huertafacilapp.R;
 import com.example.huertafacilapp.databinding.FragmentHomeBinding;
+import com.example.huertafacilapp.models.RecordatorioVista;
+
+import java.util.ArrayList;
+
 public class HomeFragment extends Fragment {
     HomeViewModel vm;
     private FragmentHomeBinding binding;
@@ -24,48 +33,28 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         vm  = new ViewModelProvider(this).get(HomeViewModel.class);
-        vm.init(requireContext());
 
-        vm.getClimaCargado().observe(getViewLifecycleOwner(), value -> {
-            if (!value) {
-                binding.tvMaxima.setVisibility(View.INVISIBLE);
-                binding.tvMinima.setVisibility(View.INVISIBLE);
-                binding.tvActual.setVisibility(View.INVISIBLE);
-                binding.tvNombre1.setVisibility(View.INVISIBLE);
-                binding.tvNombre2.setVisibility(View.INVISIBLE);
-                binding.tvNombre3.setVisibility(View.INVISIBLE);
-                binding.tvPresion.setVisibility(View.INVISIBLE);
-                binding.tvProbabilidad.setVisibility(View.INVISIBLE);
-                binding.tvTextoMaxima.setVisibility(View.INVISIBLE);
-                binding.tvTextoMinima.setVisibility(View.INVISIBLE);
-                binding.tvEstado.setVisibility(View.INVISIBLE);
-                binding.tvViento.setVisibility(View.INVISIBLE);
-                binding.tvInformacionClima.setVisibility(View.VISIBLE);
-            }else {
-                binding.tvInformacionClima.setVisibility(View.INVISIBLE);
-                binding.tvMaxima.setVisibility(View.VISIBLE);
-                binding.tvMinima.setVisibility(View.VISIBLE);
-                binding.tvActual.setVisibility(View.VISIBLE);
-                binding.tvNombre1.setVisibility(View.VISIBLE);
-                binding.tvNombre2.setVisibility(View.VISIBLE);
-                binding.tvNombre3.setVisibility(View.VISIBLE);
-                binding.tvPresion.setVisibility(View.VISIBLE);
-                binding.tvProbabilidad.setVisibility(View.VISIBLE);
-                binding.tvTextoMaxima.setVisibility(View.VISIBLE);
-                binding.tvTextoMinima.setVisibility(View.VISIBLE);
-                binding.tvEstado.setVisibility(View.VISIBLE);
-                binding.tvViento.setVisibility(View.VISIBLE);
+        RecyclerView rv = binding.listadoRecordatorios;
+        GridLayoutManager gm = new GridLayoutManager(getContext(),1, GridLayoutManager.VERTICAL,false);
+
+        rv.setLayoutManager(gm);
+
+        binding.btnNuevoRecordatorio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.nuevoRecordatorioFragment);
             }
         });
 
-        binding.tvInformacionClima.setOnClickListener(v -> {
-            vm.cargarClima(true);
-            requestLocationPermissions();
-        });
+        vm.getRecordatorios().observe(getViewLifecycleOwner(),new Observer<ArrayList<RecordatorioVista>>(){
+            @Override
+            public void onChanged(ArrayList<RecordatorioVista> recordatorios) {
+                rv.setAdapter(new HomeAdapter(getContext(),recordatorios,getLayoutInflater()));
+            }
+        }
+        );
 
-        vm.getConsejo().observe(getViewLifecycleOwner(), value -> {
-            binding.tvRecomendacion.setText(value);
-        });
+        vm.obtenerRecuperatorios();
 
         return root;
     }
@@ -75,27 +64,4 @@ public class HomeFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
-
-    public void requestLocationPermissions(){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ContextCompat.checkSelfPermission(requireContext(), ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                    || ContextCompat.checkSelfPermission(requireContext(), ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                requestPermissions(new String[]{ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION}, 1000);
-            } else {
-                vm.obtenerClima();
-            }
-        } else {
-            // mostrar que no se pudo cargar datos climaticos
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == 1000) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                vm.obtenerClima();
-            }
-        }
-    }
-
 }

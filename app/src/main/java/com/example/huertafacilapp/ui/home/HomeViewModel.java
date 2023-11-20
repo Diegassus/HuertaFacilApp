@@ -11,6 +11,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
@@ -27,78 +28,60 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.huertafacilapp.models.CurrentWeather;
 import com.example.huertafacilapp.models.OpenWeatherHelper;
+import com.example.huertafacilapp.models.RecordatorioVista;
+import com.example.huertafacilapp.request.ApiClient;
 import com.example.huertafacilapp.ui.HomeActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class HomeViewModel extends ViewModel {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class HomeViewModel extends AndroidViewModel {
     private Context context;
-    private OpenWeatherHelper helper;
-    private FusedLocationProviderClient flpc;
-    private ArrayList<String> consejos = new ArrayList<>();
-    private MutableLiveData<Boolean> climaCargado;
-    private MutableLiveData<String> consejo;
+    private ArrayList<RecordatorioVista> recordatorios;
+    private MutableLiveData<ArrayList<RecordatorioVista>> mutableRecordatorios;
 
-    public HomeViewModel() {
-        helper = new OpenWeatherHelper("");
-        consejos.add("Recuerda regar las plantas en la mañana o la tarde. Nunca cundo el sol esta en su punto mas fuerte");
-        consejos.add("No olvides revisar todos los dias que tus plantas no se hayan enfermado");
-        consejos.add("No dejes de mover el compost!!!");
+    public HomeViewModel(@NonNull Application application) {
+        super(application);
+        context = application.getApplicationContext();
+        mutableRecordatorios = new MutableLiveData<>();
+
     }
 
-    public LiveData<Boolean> getClimaCargado (){
-        if (climaCargado == null) {
-            this.climaCargado = new MutableLiveData<>();
-            climaCargado.setValue(false);
-        }
-        return climaCargado;
+    public LiveData<ArrayList<RecordatorioVista>> getRecordatorios(){
+        return mutableRecordatorios;
     }
 
-    public LiveData<String> getConsejo(){
-        if(consejo == null) {
-            this.consejo = new MutableLiveData<>();
-            consejo.setValue(this.consejos.get((int) (Math.random() * (3))));
-        }
-        return consejo;
-    }
+    public void obtenerRecuperatorios(){
+        SharedPreferences sp = context.getSharedPreferences("token.xml",0);
+        String token = sp.getString("token","");
+        if(token.isEmpty()) return ;
 
-    public void cargarClima(boolean value) {
-        climaCargado.setValue(value);
-    }
-
-    @SuppressLint("MissingPermission")
-    public void obtenerClima() {
-        flpc.getLastLocation().addOnSuccessListener((Activity) this.context, new OnSuccessListener<Location>() {
+        ApiClient.IEndpoint end = ApiClient.getApi();
+        Call<List<RecordatorioVista>> call = end.obtenerRecordatorios(token);
+        call.enqueue(new Callback<List<RecordatorioVista>>() {
             @Override
-            public void onSuccess(Location location) {
-                if (location != null) {
-                    helper.getCurrentWeatherByGeoCoordinates(location.getLatitude(), location.getLongitude(), new OpenWeatherHelper.CurrentWeatherCallback() {
-                        @Override
-                        public void onSuccess(CurrentWeather currentWeather) {
-                            Toast.makeText(context, "\"Coordinates: \" + currentWeather.getCoord().getLat() + \", \" + currentWeather.getCoord().getLon() + \"\\n\"\n" +
-                                    "                                    + \"Weather Description: \" + currentWeather.getWeather().get(0).getDescription() + \"\\n\"\n" +
-                                    "                                    + \"Temperature: \" + currentWeather.getMain().getTempMax() + \"\\n\"\n" +
-                                    "                                    + \"Wind Speed: \" + currentWeather.getWind().getSpeed() + \"\\n\"\n" +
-                                    "                                    + \"City, Country: \" + currentWeather.getName() + \", \" + currentWeather.getSys().getCountry()\n" +
-                                    "                            ", Toast.LENGTH_LONG).show();
-                        }
-
-                        @Override
-                        public void onFailure(Throwable throwable) {
-                            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+            public void onResponse(Call<List<RecordatorioVista>> call, Response<List<RecordatorioVista>> response) {
+                if(response.isSuccessful()){
+                    if(response.body() != null){
+                        Log.d("Recordatorios",response.body().toString());
+                        recordatorios = (ArrayList<RecordatorioVista>) response.body();
+                        mutableRecordatorios.setValue(recordatorios);
+                    }
                 }
             }
-        });
-    }
 
-    public void init(Context context) {
-        this.context = context;
-        flpc = LocationServices.getFusedLocationProviderClient(this.context);
+            @Override
+            public void onFailure(Call<List<RecordatorioVista>> call, Throwable t) {
+                Log.d("Recordatorios ERROR",t.getMessage());
+            }
+        });
     }
 }
 

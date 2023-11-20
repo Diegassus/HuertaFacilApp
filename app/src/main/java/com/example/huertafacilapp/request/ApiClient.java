@@ -2,15 +2,21 @@ package com.example.huertafacilapp.request;
 
 
 import com.example.huertafacilapp.models.DocumentoVista;
+import com.example.huertafacilapp.models.EnvioRegistro;
+import com.example.huertafacilapp.models.EnvioRegistroUpdate;
 import com.example.huertafacilapp.models.Login;
 import com.example.huertafacilapp.models.Planta;
 import com.example.huertafacilapp.models.PlantaListado;
+import com.example.huertafacilapp.models.PlantaVista;
+import com.example.huertafacilapp.models.RecordatorioVista;
 import com.example.huertafacilapp.models.Registro;
+import com.example.huertafacilapp.models.Tipo_RecordatorioVista;
 import com.example.huertafacilapp.models.Usos;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import okhttp3.MultipartBody;
@@ -79,6 +85,27 @@ public class ApiClient {
         @Multipart
         @POST("Usuarios/ActualizarDocumentos")
         Call<Boolean> actualizarDocumento(@Header("Authorization") String token, @Part MultipartBody.Part file, @Part("nombreViejo") RequestBody nombreViejo);
+
+        @GET("Usuarios/Recordatorios")
+        Call<List<RecordatorioVista>> obtenerRecordatorios(@Header("Authorization")String token);
+
+        @GET("Usuarios/nombresPlantas")
+        Call<List<PlantaVista>> nombresPlantas(@Header("Authorization")String token);
+
+        @GET("Usuarios/tiposRecordatorios")
+        Call<List<Tipo_RecordatorioVista>> tiposRecordatorios(@Header("Authorization")String token);
+
+        @POST("Usuarios/Recordatorios")
+        Call<String> crearRecordatorio(@Header("Authorization")String token, @Body EnvioRegistro envio);
+
+        @GET("Usuarios/Recordatorio")
+        Call<RecordatorioVista> verRecordatorio(@Header("Authorization")String token, @Query("idRecordatorio") int idRecordatorio);
+
+        @POST("Usuarios/ActualizarRecordatorio")
+        Call<String> actualizarRecordatorio(@Header("Authorization")String token, @Body EnvioRegistroUpdate envio);
+
+        @POST("Usuarios/EliminarRecordatorio")
+        Call<String> eliminarRecordatorio(@Header("Authorization")String token, @Query("RecordatorioId") int RecordatorioId);
 
     }
 }
