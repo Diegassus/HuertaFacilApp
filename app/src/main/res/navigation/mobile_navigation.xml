@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.huertafacilapp.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:label="Recordatorios"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_nav_home_to_nuevoRecordatorioFragment"
@@ -24,7 +24,7 @@
     <fragment
         android:id="@+id/nav_listado_principal"
         android:name="com.example.huertafacilapp.ui.listadoPrincipal.ListadoPrincipalFragment"
-        android:label="listado_principal"
+        android:label="Plantas"
         tools:layout="@layout/fragment_listado_principal" >
         <action
             android:id="@+id/action_nav_listado_principal_to_plantaDetalle"
@@ -32,15 +32,9 @@
     </fragment>
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.huertafacilapp.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
-
-    <fragment
         android:id="@+id/plantaDetalle"
         android:name="com.example.huertafacilapp.ui.listadoPrincipal.detalle.PlantaDetalle"
-        android:label="fragment_planta_detalle"
+        android:label="Detalle"
         tools:layout="@layout/fragment_planta_detalle" >
         <action
             android:id="@+id/action_plantaDetalle_to_nav_listado_principal"
@@ -71,7 +65,7 @@
     <fragment
         android:id="@+id/nav_listado_favoritas"
         android:name="com.example.huertafacilapp.ui.favoritas.FavoritasFragment"
-        android:label="fragment_favoritas"
+        android:label="Favoritas"
         tools:layout="@layout/fragment_favoritas" >
         <action
             android:id="@+id/action_favoritasFragment_to_plantaDetalle"
@@ -80,7 +74,7 @@
     <fragment
         android:id="@+id/nav_rotaciones"
         android:name="com.example.huertafacilapp.ui.rotaciones.RotacionesFragment"
-        android:label="fragment_rotaciones"
+        android:label="Rotar con..."
         tools:layout="@layout/fragment_rotaciones" >
         <action
             android:id="@+id/action_rotacionesFragment_to_plantaDetalle"
@@ -89,7 +83,7 @@
     <fragment
         android:id="@+id/nav_listado_documentos"
         android:name="com.example.huertafacilapp.ui.documentos.ListadoDocumentosFragment"
-        android:label="fragment_listado_documentos"
+        android:label="Mis Documentos"
         tools:layout="@layout/fragment_listado_documentos" >
         <action
             android:id="@+id/action_nav_listado_documentos_to_nuevoDocumentoFragment"
@@ -101,7 +95,7 @@
     <fragment
         android:id="@+id/nav_NuevoDocumentoFragment"
         android:name="com.example.huertafacilapp.ui.documentos.nuevo.NuevoDocumentoFragment"
-        android:label="fragment_nuevo_documento"
+        android:label="Nuevo Documento"
         tools:layout="@layout/fragment_nuevo_documento" >
         <action
             android:id="@+id/action_nuevoDocumentoFragment_to_nav_listado_documentos"
@@ -110,7 +104,7 @@
     <fragment
         android:id="@+id/nav_detalleDocumento"
         android:name="com.example.huertafacilapp.ui.documentos.detalle.DetalleDocumentoFragment"
-        android:label="fragment_detalle_documento"
+        android:label="Detalle"
         tools:layout="@layout/fragment_detalle_documento" >
         <action
             android:id="@+id/action_nav_detalleDocumento_to_nav_listado_documentos"
@@ -119,7 +113,7 @@
     <fragment
         android:id="@+id/nuevoRecordatorioFragment"
         android:name="com.example.huertafacilapp.ui.home.nuevo.NuevoRecordatorioFragment"
-        android:label="fragment_nuevo_recordatorio"
+        android:label="Nuevo Recordatorio"
         tools:layout="@layout/fragment_nuevo_recordatorio" >
         <action
             android:id="@+id/action_nuevoRecordatorioFragment_to_nav_home"
@@ -128,7 +122,7 @@
     <fragment
         android:id="@+id/nav_detalleRecordatorioFragment"
         android:name="com.example.huertafacilapp.ui.home.detalle.DetalleRecordatorioFragment"
-        android:label="fragment_detalle_recordatorio"
+        android:label="Detalle"
         tools:layout="@layout/fragment_detalle_recordatorio" >
         <action
             android:id="@+id/action_detalleRecordatorioFragment_to_nav_home"
@@ -137,7 +131,7 @@
     <fragment
         android:id="@+id/nav_tipsFragment"
         android:name="com.example.huertafacilapp.ui.tips.TipsFragment"
-        android:label="fragment_tips"
+        android:label="Tips"
         tools:layout="@layout/fragment_tips" >
         <action
             android:id="@+id/action_tipsFragment_to_plantaDetalle"
@@ -146,7 +140,7 @@
     <fragment
         android:id="@+id/nav_usosFragment"
         android:name="com.example.huertafacilapp.ui.usos.UsosFragment"
-        android:label="fragment_usos"
+        android:label="¿Para que sirve?"
         tools:layout="@layout/fragment_usos" >
         <action
             android:id="@+id/action_nav_usosFragment_to_plantaDetalle"
@@ -155,7 +149,7 @@
     <fragment
         android:id="@+id/nav_biopreparadosFragment"
         android:name="com.example.huertafacilapp.ui.biopreparados.BiopreparadosFragment"
-        android:label="fragment_biopreparados"
+        android:label="Biopreparados"
         tools:layout="@layout/fragment_biopreparados" >
         <action
             android:id="@+id/action_nav_biopreparadosFragment_to_plantaDetalle"
@@ -164,7 +158,7 @@
     <fragment
         android:id="@+id/nav_amenazasFragment"
         android:name="com.example.huertafacilapp.ui.amenazas.AmenazasFragment"
-        android:label="fragment_amenazas"
+        android:label="Amenazas"
         tools:layout="@layout/fragment_amenazas" >
         <action
             android:id="@+id/action_nav_amenazasFragment_to_plantaDetalle"
@@ -176,7 +170,7 @@
     <fragment
         android:id="@+id/nav_curasFragment"
         android:name="com.example.huertafacilapp.ui.curas.CurasFragment"
-        android:label="fragment_curas"
+        android:label="Curas"
         tools:layout="@layout/fragment_curas" >
         <action
             android:id="@+id/action_curasFragment_to_nav_amenazasFragment"
@@ -185,7 +179,7 @@
     <fragment
         android:id="@+id/nav_contrariasFragment"
         android:name="com.example.huertafacilapp.ui.contrarias.ContrariasFragment"
-        android:label="fragment_contrarias"
+        android:label="Incompatibles"
         tools:layout="@layout/fragment_contrarias" >
         <action
             android:id="@+id/action_contrariasFragment_to_plantaDetalle"

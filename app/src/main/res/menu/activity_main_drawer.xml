@@ -6,19 +6,28 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
+            android:iconTint="@color/black"
             android:icon="?attr/actionModePasteDrawable"
             android:title="Inicio" />
         <item
             android:id="@+id/nav_listado_principal"
             android:icon="@android:drawable/ic_menu_search"
-            android:title="Plantas" />
+            android:title="Plantas"
+            android:iconTint="@color/black"/>
         <item
             android:id="@+id/nav_listado_favoritas"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Favoritas" />
+            android:icon="@android:drawable/btn_star_big_on"
+            android:title="Favoritas"
+            android:iconTint="@color/black"/>
         <item
             android:id="@+id/nav_listado_documentos"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Documentos" />
+            android:icon="@android:drawable/sym_contact_card"
+            android:title="Documentos"
+            android:iconTint="@color/black"/>
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@android:drawable/ic_menu_close_clear_cancel"
+            android:title="Salir"
+            android:iconTint="@color/black"/>
     </group>
 </menu>

@@ -6,6 +6,7 @@ import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -20,6 +21,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
+
+        SharedPreferences sp = getApplicationContext().getSharedPreferences("token.xml",0);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.remove("token");
+        editor.commit();
 
         vm = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(MainActivityViewModel.class);
 

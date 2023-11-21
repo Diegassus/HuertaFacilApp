@@ -3,9 +3,11 @@ package com.example.huertafacilapp.ui;
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 
@@ -14,6 +16,7 @@ import com.example.huertafacilapp.databinding.ActivityHomeBinding;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -35,13 +38,6 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarHome.toolbar);
-        binding.appBarHome.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
@@ -54,6 +50,37 @@ public class HomeActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        navigationView.setNavigationItemSelectedListener(
+            new NavigationView.OnNavigationItemSelectedListener() {
+
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    switch (item.getItemId()){
+                        case R.id.nav_home:
+                            navController.navigate(R.id.nav_home);
+                            drawer.closeDrawers();
+                            return true;
+                        case R.id.nav_listado_principal:
+                            navController.navigate(R.id.nav_listado_principal);
+                            drawer.closeDrawers();
+                            return true;
+                        case R.id.nav_listado_favoritas:
+                            navController.navigate(R.id.nav_listado_favoritas);
+                            drawer.closeDrawers();
+                            return true;
+                        case R.id.nav_listado_documentos:
+                            navController.navigate(R.id.nav_listado_documentos);
+                            drawer.closeDrawers();
+                            return true;
+                        case R.id.nav_logout:
+                            Alertas.Salir(HomeActivity.this);
+                            return false;
+                        default:
+                            return false;
+                    }
+                }
+            }
+        );
     }
 
     @Override
