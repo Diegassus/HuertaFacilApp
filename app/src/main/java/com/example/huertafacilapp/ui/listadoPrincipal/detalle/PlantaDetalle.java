@@ -46,6 +46,44 @@ public class PlantaDetalle extends Fragment {
       binding.tvSemillado.setText(planta.getSemillado() + " dias");
       binding.tvPoda.setText(planta.getPoda() + " dias");
       binding.tvInfoLuzTipo.setText("Esta planta necesita luz "+planta.getIluminacion().getNombre() +" y se clasifica como: " + planta.getTipo().getNombre());
+      switch (planta.getMes()) {
+        case 1:
+          binding.tvMes.setText("Enero");
+          break;
+        case 2:
+          binding.tvMes.setText("Febrero");
+          break;
+        case 3:
+          binding.tvMes.setText("Marzo");
+          break;
+        case 4:
+          binding.tvMes.setText("Abril");
+          break;
+        case 5:
+          binding.tvMes.setText("Mayo");
+          break;
+        case 6:
+          binding.tvMes.setText("Junio");
+          break;
+        case 7:
+          binding.tvMes.setText("Julio");
+          break;
+        case 8:
+          binding.tvMes.setText("Agosto");
+          break;
+        case 9:
+          binding.tvMes.setText("Septiembre");
+          break;
+        case 10:
+          binding.tvMes.setText("Octubre");
+          break;
+        case 11:
+          binding.tvMes.setText("Noviembre");
+          break;
+        case 12:
+          binding.tvMes.setText("Diciembre");
+          break;
+      }
     });
 
     mViewModel.getFavorito().observe(getViewLifecycleOwner(), favorito -> {
@@ -56,9 +94,28 @@ public class PlantaDetalle extends Fragment {
       });
     });
 
-    // TODO: VER ROTACIONES
     binding.btnRotaciones.setOnClickListener(v -> {
       mViewModel.verRotaciones(v);
+    });
+
+    binding.btnTips.setOnClickListener(v -> {
+      mViewModel.verTips(v);
+    });
+
+    binding.btnUsos.setOnClickListener(v -> {
+      mViewModel.verUsos(v);
+    });
+
+    binding.btnBonificadores.setOnClickListener(v -> {
+      mViewModel.verBonos(v);
+    });
+
+    binding.btnEnfermedades.setOnClickListener(v -> {
+      mViewModel.verEnfermedades(v);
+    });
+
+    binding.btnCompatibles.setOnClickListener(v -> {
+      mViewModel.verCompatibles(v);
     });
 
     return root;

@@ -51,6 +51,22 @@
         <action
             android:id="@+id/action_plantaDetalle_to_rotacionesFragment"
             app:destination="@id/nav_rotaciones" />
+        <action
+            android:id="@+id/action_plantaDetalle_to_tipsFragment"
+            app:destination="@id/nav_tipsFragment" />
+        <action
+            android:id="@+id/action_plantaDetalle_to_nav_usosFragment"
+            app:destination="@id/nav_usosFragment" />
+        <action
+            android:id="@+id/action_plantaDetalle_to_nav_biopreparadosFragment"
+            app:destination="@id/nav_biopreparadosFragment" />
+        <action
+            android:id="@+id/action_plantaDetalle_to_nav_amenazasFragment"
+            app:destination="@id/nav_amenazasFragment" />
+        <action
+            android:id="@+id/action_plantaDetalle_to_contrariasFragment"
+            app:destination="@id/nav_contrariasFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/nav_listado_favoritas"
@@ -118,5 +134,63 @@
             android:id="@+id/action_detalleRecordatorioFragment_to_nav_home"
             app:destination="@id/nav_home" />
     </fragment>
+    <fragment
+        android:id="@+id/nav_tipsFragment"
+        android:name="com.example.huertafacilapp.ui.tips.TipsFragment"
+        android:label="fragment_tips"
+        tools:layout="@layout/fragment_tips" >
+        <action
+            android:id="@+id/action_tipsFragment_to_plantaDetalle"
+            app:destination="@id/plantaDetalle" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_usosFragment"
+        android:name="com.example.huertafacilapp.ui.usos.UsosFragment"
+        android:label="fragment_usos"
+        tools:layout="@layout/fragment_usos" >
+        <action
+            android:id="@+id/action_nav_usosFragment_to_plantaDetalle"
+            app:destination="@id/plantaDetalle" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_biopreparadosFragment"
+        android:name="com.example.huertafacilapp.ui.biopreparados.BiopreparadosFragment"
+        android:label="fragment_biopreparados"
+        tools:layout="@layout/fragment_biopreparados" >
+        <action
+            android:id="@+id/action_nav_biopreparadosFragment_to_plantaDetalle"
+            app:destination="@id/plantaDetalle" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_amenazasFragment"
+        android:name="com.example.huertafacilapp.ui.amenazas.AmenazasFragment"
+        android:label="fragment_amenazas"
+        tools:layout="@layout/fragment_amenazas" >
+        <action
+            android:id="@+id/action_nav_amenazasFragment_to_plantaDetalle"
+            app:destination="@id/plantaDetalle" />
+        <action
+            android:id="@+id/action_nav_amenazasFragment_to_curasFragment"
+            app:destination="@id/nav_curasFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_curasFragment"
+        android:name="com.example.huertafacilapp.ui.curas.CurasFragment"
+        android:label="fragment_curas"
+        tools:layout="@layout/fragment_curas" >
+        <action
+            android:id="@+id/action_curasFragment_to_nav_amenazasFragment"
+            app:destination="@id/nav_amenazasFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_contrariasFragment"
+        android:name="com.example.huertafacilapp.ui.contrarias.ContrariasFragment"
+        android:label="fragment_contrarias"
+        tools:layout="@layout/fragment_contrarias" >
+        <action
+            android:id="@+id/action_contrariasFragment_to_plantaDetalle"
+            app:destination="@id/plantaDetalle" />
+    </fragment>
+
 
 </navigation>

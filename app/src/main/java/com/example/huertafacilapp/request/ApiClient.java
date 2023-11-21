@@ -1,6 +1,8 @@
 package com.example.huertafacilapp.request;
 
 
+import com.example.huertafacilapp.models.Amenazas;
+import com.example.huertafacilapp.models.Biopreparados;
 import com.example.huertafacilapp.models.DocumentoVista;
 import com.example.huertafacilapp.models.EnvioRegistro;
 import com.example.huertafacilapp.models.EnvioRegistroUpdate;
@@ -11,6 +13,7 @@ import com.example.huertafacilapp.models.PlantaVista;
 import com.example.huertafacilapp.models.RecordatorioVista;
 import com.example.huertafacilapp.models.Registro;
 import com.example.huertafacilapp.models.Tipo_RecordatorioVista;
+import com.example.huertafacilapp.models.Tips;
 import com.example.huertafacilapp.models.Usos;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -56,6 +59,9 @@ public class ApiClient {
 
         @GET("Plantas/ListadoPrincipal")
         Call<List<PlantaListado>> listadoPrincipal(@Header("Authorization") String token);
+
+        @GET("Plantas/Contrarias")
+        Call<List<PlantaListado>> listadoContrarias(@Header("Authorization") String token, @Query("PlantaId") int PlantaId);
 
         @GET("Plantas/ListadoFavoritas")
         Call<List<PlantaListado>> listadoFavoritas(@Header("Authorization") String token);
@@ -106,6 +112,21 @@ public class ApiClient {
 
         @POST("Usuarios/EliminarRecordatorio")
         Call<String> eliminarRecordatorio(@Header("Authorization")String token, @Query("RecordatorioId") int RecordatorioId);
+
+        @GET("Plantas/tips")
+        Call<List<Tips>> obtenerTips(@Header("Authorization")String token, @Query("PlantaId") int PlantaId);
+
+        @GET("Plantas/usos")
+        Call<List<Usos>> obtenerUsos(@Header("Authorization")String token, @Query("PlantaId") int PlantaId);
+
+        @GET("plantas/bonificadores")
+        Call<List<Biopreparados>> obtenerBonificadores(@Header("Authorization")String token, @Query("PlantaId") int PlantaId);
+
+        @GET("plantas/biopreparados")
+        Call<List<Biopreparados>> obtenerCuras(@Header("Authorization")String token, @Query("AmenazaId") int AmenazaId);
+
+        @GET("plantas/amenazas")
+        Call<List<Amenazas>> obtenerAmenazas(@Header("Authorization")String token, @Query("PlantaId") int PlantaId);
 
     }
 }

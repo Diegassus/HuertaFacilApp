@@ -1,25 +1,25 @@
 package com.example.huertafacilapp.models;
 
-public class Usos {
-  private int id;
+public class Tips {
+  private int Id;
   private String descripcion;
   private int plantaId;
 
-  public Usos() {
+  public Tips() {
   }
 
-  public Usos(int id, String descripcion, int plantaId) {
-    this.id = id;
+  public Tips(int id, String descripcion, int plantaId) {
+    Id = id;
     this.descripcion = descripcion;
     this.plantaId = plantaId;
   }
 
   public int getId() {
-    return id;
+    return Id;
   }
 
   public void setId(int id) {
-    this.id = id;
+    Id = id;
   }
 
   public String getDescripcion() {

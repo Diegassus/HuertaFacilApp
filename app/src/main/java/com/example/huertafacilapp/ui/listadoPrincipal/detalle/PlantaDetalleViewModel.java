@@ -130,4 +130,34 @@ public class PlantaDetalleViewModel extends AndroidViewModel {
     bundle.putInt("PlantaId",plantaId);
     Navigation.findNavController(v).navigate(R.id.nav_rotaciones,bundle);
   }
+
+  public void verTips(View v){
+    Bundle bundle = new Bundle();
+    bundle.putInt("PlantaId",plantaId);
+    Navigation.findNavController(v).navigate(R.id.nav_tipsFragment,bundle);
+  }
+
+  public void verUsos(View v){
+    Bundle bundle = new Bundle();
+    bundle.putInt("PlantaId",plantaId);
+    Navigation.findNavController(v).navigate(R.id.nav_usosFragment,bundle);
+  }
+
+  public void verBonos(View v){
+    Bundle bundle = new Bundle();
+    bundle.putInt("PlantaId",plantaId);
+    Navigation.findNavController(v).navigate(R.id.nav_biopreparadosFragment,bundle);
+  }
+
+  public void verEnfermedades(View v){
+    Bundle bundle = new Bundle();
+    bundle.putInt("PlantaId",plantaId);
+    Navigation.findNavController(v).navigate(R.id.nav_amenazasFragment,bundle);
+  }
+
+  public void verCompatibles(View v){
+    Bundle bundle = new Bundle();
+    bundle.putInt("PlantaId",plantaId);
+    Navigation.findNavController(v).navigate(R.id.nav_contrariasFragment,bundle);
+  }
 }
